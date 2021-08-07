@@ -1,0 +1,139 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'super.css' %}">
+    <link rel="stylesheet" href="{% static 'footer.css' %}">
+    <script src="https://use.fontawesome.com/977b0e453b.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>View Instructors</title>
+</head>
+<style media="screen">
+    table {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+    }
+
+    table,
+    th,
+    td {
+        padding: 10px;
+    }
+
+    a {
+        color: #866ec7 !important;
+    }
+
+    th {
+        background-color: #866ec7 !important;
+        color: white;
+    }
+
+    h4 {
+        margin-top: 20px;
+        font-size: 15px;
+        color: gray;
+    }
+
+    a {
+        margin-top: 20px !important;
+        font-style: italic;
+    }
+</style>
+
+<body>
+
+    {% load static %}
+    <div class="container">
+        {% for section in sections %}
+        <h2 class="secHead">{{ section.section_id }} ({{ section.department }})</h2>
+            {% for div in divs%}
+            <table class="table2">
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+            
+                
+                <h3> Section: {{div}} </h3>
+                <tr>
+                    <!--
+                    <th>Weekdays</th>
+                    <th>9:30 - 10:30</th>
+                    <th>10:30 - 11:30</th>
+                    <th>11:30 - 12:30</th>
+                    <th>12:30 - 1:30</th>
+                    <th>2:30 - 3:30</th>
+                    <th>3:30 - 4:30</th>
+                    <th>4:30 - 5:30</th> -->
+
+                    <th>Weekdays</th>
+                    <th>Class 1</th>
+                    <th>Class 2</th>
+                    <th>Class 3</th>
+                    <th>Class 4</th>
+                    <th>Class 5</th>
+                    
+                </tr>
+                    {% for class in schedule %}
+                    
+                        {% if class.section == section.section_id %}
+                           {% if div == class.room %}
+                                {% for i in days %}
+                                   
+                                    <tr>
+                                        <td>{{i}}</td>
+                                        
+
+                                        {% for class in schedule %}
+                                            
+                                            {% if class.day == i and class.section == section.section_id and div == class.room %}
+                                                <td>Time : {{class.time}} {{class.course}} ({{class.instructor}})</td>
+                                            {% endif %}
+                                            
+                                                                                                                     
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                                
+
+                            {% endif %} 
+                        {% endif %} 
+            
+                    {% endfor %}
+                
+            </table>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
