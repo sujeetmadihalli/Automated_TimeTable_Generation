@@ -16,4 +16,4 @@ setps
               password - password@123
 6. Enter all the details such as class timings, subjects etc
 7. Go back to home page and generate the time-table
-8. Hopefully results will be shown on the screen and will also be saved in your local database in Xlsx format.
+8. Results will be shown on the screen and will also be saved in your local database in Xlsx format.
