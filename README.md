@@ -17,5 +17,5 @@ python manage.py runserver
 7. Go back to the home page and generate the time-table.
 8. The results will be displayed on the screen and will also be saved in your local database in XLSX format.
 
-# Author
+### Author
 - Sujeet
